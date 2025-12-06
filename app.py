@@ -1,12 +1,15 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
-from langchain.chat_models import ChatOpenAI
+
+# ✅ Correct imports for LangChain 0.3.x+
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_chroma import Chroma
+
 import datetime
+
 
 # --- Google Sheets Auth ---
 creds = Credentials.from_service_account_info(st.secrets["google_service_account"])
